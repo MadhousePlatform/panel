@@ -52,7 +52,6 @@ class IndexPageTest extends TestCase
         $response = $this->actingAs($user)->get(route('index'));
 
         $response
-            ->assertRedirectContains('/')
             ->assertStatus(Response::HTTP_OK);
     }
 }

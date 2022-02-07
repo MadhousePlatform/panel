@@ -23,7 +23,7 @@ class IndexTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit(new IndexPage())
-                ->assertSee('Welcome to Madhouse Miners!');
+                ->assertSee('Welcome to Madhouse Miners');
         });
     }
 }

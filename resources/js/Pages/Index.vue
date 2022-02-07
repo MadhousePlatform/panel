@@ -4,6 +4,10 @@
         Welcome to Madhouse Miners!
     </portal>
     <div>
+        <h1 class="text-5xl text-mh-500 mb-6">
+            Welcome to Madhouse Miners!
+        </h1>
+
         <fieldset v-for="type in servers">
             <legend class="block mb-4">
                 <span class="name">{{ type.group }}</span>
