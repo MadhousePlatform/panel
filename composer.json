@@ -58,7 +58,6 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                "laravel/telescope",
                 "laravel/dusk",
                 "itsgoingd/clockwork"
             ]
