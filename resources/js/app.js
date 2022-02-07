@@ -7,7 +7,7 @@ import { Toaster } from '@incuca/vue3-toaster'
 import PortalVue from 'portal-vue';
 
 const toaster_options = {
-    position: 'top-right',
+    position: 'bottom',
     maxToasts: 5,
 }
 
