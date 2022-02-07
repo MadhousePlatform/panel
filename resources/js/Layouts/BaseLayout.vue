@@ -1,7 +1,7 @@
 <template>
     <x-head :title="title"/>
     <div class="min-h-full">
-        <div class="bg-mh-500 pb-32">
+        <div class="bg-mh-700 pb-24">
             <Disclosure as="nav" class="bg-mh-500 border-b border-mh-600 lg:border-none"
                         v-slot="{ open }">
                 <div class="max-w-8xl mx-auto">
@@ -97,17 +97,10 @@
                     </div>
                 </DisclosurePanel>
             </Disclosure>
-            <header class="max-w-8xl mx-auto py-10 bg-mh-600 bg-opacity-75">
-                <div class="px-4 sm:px-6 lg:px-8">
-                    <h1 class="text-3xl font-bold text-white">
-                        <portal-target name="page-header"/>
-                    </h1>
-                </div>
-            </header>
         </div>
 
-        <main class="-mt-32">
-            <div class="max-w-8xl shadow mx-auto mb-12 bg-zinc-900 text-white lg:rounded-b-lg">
+        <main class="-mt-8">
+            <div class="max-w-8xl shadow mx-auto mb-12 bg-zinc-800 text-white lg:rounded-lg">
                 <div class="px-5 py-6 sm:px-6">
                     <slot/>
                 </div>
