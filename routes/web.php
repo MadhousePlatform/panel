@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\{
+    DashboardController,
+    IndexController,
+    ServerController,
+    DiscordController
+};
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +19,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', IndexController::class)->name('index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::get('/servers', [ServerController::class, 'index'])->name('servers');
+
+    Route::get('/discord', [DiscordController::class, 'index'])->name('discord');
+});

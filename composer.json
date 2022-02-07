@@ -6,19 +6,24 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "barryvdh/laravel-debugbar": "^3.6",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
         "inertiajs/inertia-laravel": "^0.5.2",
         "laravel/framework": "^8.75",
+        "laravel/horizon": "^5.8",
         "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "tightenco/ziggy": "^1.0"
+        "tightenco/ziggy": "^1.4"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.11",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "laravel/dusk": "^6.21",
         "laravel/sail": "^1.0.1",
+        "laravel/telescope": "^4.7",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
         "phpunit/phpunit": "^9.5.10"
@@ -52,7 +57,11 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope",
+                "laravel/dusk",
+                "itsgoingd/clockwork"
+            ]
         }
     },
     "config": {
