@@ -13,7 +13,7 @@
                 <p>{{ server.online_players }} players</p>
             </div>
         </div>
-        <button type="button" class="url" @click.prevent="copy(server.url)">{{ server.url }}</button>
+        <button type="button" class="url" v-if="server.url" @click.prevent="copy(server.url)">{{ server.url }}</button>
     </div>
 </template>
 
