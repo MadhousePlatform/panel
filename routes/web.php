@@ -25,4 +25,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/servers', [ServerController::class, 'index'])->name('servers');
 
     Route::get('/discord', [DiscordController::class, 'index'])->name('discord');
+
+    Route::middleware('admin')->prefix('admin')->group(function() {
+        Route::get('/', function() {
+            return "admin!";
+        })->name('admin.index');
+    });
 });

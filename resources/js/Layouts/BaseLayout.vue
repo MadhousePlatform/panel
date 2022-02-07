@@ -51,20 +51,40 @@
                                                 leave-from-class="transform opacity-100 scale-100"
                                                 leave-to-class="transform opacity-0 scale-95">
                                         <MenuItems
-                                            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                            <MenuItem v-for="item in userNavigation" :key="item.name"
-                                                      v-slot="{ active }">
-                                                <a :href="item.href"
-                                                   :class="[active ? 'bg-gray-100' : '', 'block py-2 px-4 text-sm text-gray-700']">
-                                                    {{ item.name }}
-                                                </a>
+                                            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-mh-600 ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                            <MenuItem key="admin-link" v-slot="{ active }">
+                                                <x-link :href="route('admin.index')"
+                                                   :class="[active ? 'bg-mh-900 hover:text-red-200' : '', 'block py-2 px-4 text-zinc-50']">
+                                                    Admin Panel
+                                                </x-link>
+                                            </MenuItem>
+                                            <div class="h-px bg-mh-800 my-2"/>
+                                            <MenuItem key="admin-link" v-slot="{ active }">
+                                                <x-link :href="route('profile.show')"
+                                                        :class="[active ? 'bg-mh-900' : '', 'block py-2 px-4 text-zinc-50']">
+                                                    Settings
+                                                </x-link>
+                                            </MenuItem>
+                                            <MenuItem key="help-link" v-slot="{ active }">
+                                                <x-link :href="route('index')"
+                                                        :class="[active ? 'bg-mh-900' : '', 'block py-2 px-4 text-zinc-50']">
+                                                    Help
+                                                </x-link>
+                                            </MenuItem>
+                                            <div class="h-px bg-mh-800 my-2"/>
+                                            <MenuItem key="logout-link" v-slot="{ active }">
+                                                <form @submit.prevent="logout">
+                                                    <button type="submit" class="block w-full text-left py-2 px-4 text-zinc-50 hover:text-white hover:bg-mh-900">
+                                                        Sign Out
+                                                    </button>
+                                                </form>
                                             </MenuItem>
                                         </MenuItems>
                                     </transition>
                                 </Menu>
                             </div>
                             <div class="flex items-center space-x-4" v-else>
-                                <top-navigation :guest_nav="true" />
+                                <top-navigation :guest_nav="true"/>
                             </div>
                         </div>
                     </div>
@@ -89,6 +109,11 @@
                             </button>
                         </div>
                         <div class="mt-3 px-2 space-y-1">
+                            <DisclosureButton key="admin-link" as="a" href="/admin"
+                                              class="block rounded-md py-2 px-3 text-base font-medium text-white hover:bg-mh-700 hover:bg-opacity-75">
+                                Admin Panel
+                            </DisclosureButton>
+                            <div class="h-px bg-mh-800 my-2"/>
                             <DisclosureButton v-for="item in userNavigation" :key="item.name" as="a" :href="item.href"
                                               class="block rounded-md py-2 px-3 text-base font-medium text-white hover:bg-mh-700 hover:bg-opacity-75">
                                 {{ item.name }}
@@ -116,12 +141,6 @@ import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
 import TopNavigation from "@/Prefabs/TopNavigation";
 import Search from "@/Prefabs/Search";
 
-const userNavigation = [
-    { name: 'Your Profile', href: '#' },
-    { name: 'Settings', href: '#' },
-    { name: 'Sign out', href: '#' },
-]
-
 export default {
     props: {
         title: {
@@ -145,11 +164,11 @@ export default {
         XIcon,
     },
 
-    setup() {
-        return {
-            userNavigation,
+    methods: {
+        logout() {
+            this.$inertia.post(route('logout'));
         }
-    },
+    }
 }
 </script>
 
