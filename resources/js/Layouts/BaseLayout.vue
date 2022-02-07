@@ -74,7 +74,7 @@
                     <div class="px-2 pt-2 pb-3 space-y-1">
                         <top-navigation/>
                     </div>
-                    <div class="pt-4 pb-3 border-t border-indigo-700">
+                    <div class="pt-4 pb-3 border-t border-b bg-mh-600 border-mh-700">
                         <div class="px-5 flex items-center">
                             <div class="flex-shrink-0">
                                 <img class="rounded-full h-10 w-10" :src="$page.props.user.profile_photo_url" alt=""/>
@@ -107,7 +107,7 @@
         </div>
 
         <main class="-mt-32">
-            <div class="max-w-8xl shadow mx-auto mb-12 bg-white lg:rounded-b-lg">
+            <div class="max-w-8xl shadow mx-auto mb-12 bg-zinc-900 text-white lg:rounded-b-lg">
                 <div class="px-5 py-6 sm:px-6">
                     <slot/>
                 </div>

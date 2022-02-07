@@ -1,5 +1,5 @@
 <template>
-    <x-head title="Welcome to Madhouse Miners" />
+    <x-head title="Welcome to Madhouse Miners"/>
     <portal to="page-header">
         Welcome to Madhouse Miners!
     </portal>

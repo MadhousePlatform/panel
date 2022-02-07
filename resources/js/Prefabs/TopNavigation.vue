@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 a {
-    @apply rounded-md text-center py-2 lg:py-4 px-4 text-sm font-medium;
+    @apply rounded-md text-center py-2 lg:py-4 px-4 text-sm font-medium flex items-center;
     @apply transition duration-150 ease-in;
 }
 
@@ -47,6 +47,6 @@ a.active {
 }
 
 a:not(.active) {
-    @apply text-mh-900 hover:bg-mh-800 hover:text-white;
+    @apply text-black hover:bg-mh-900 hover:text-white;
 }
 </style>
