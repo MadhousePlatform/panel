@@ -1,5 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
+    <x-head :title="__(title)"/>
     <div>
         <TransitionRoot as="template" :show="sidebarOpen">
             <Dialog as="div" class="fixed inset-0 flex z-40 md:hidden" @close="sidebarOpen = false">
@@ -21,7 +22,7 @@
                                 <button type="button"
                                         class="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                                         @click="sidebarOpen = false">
-                                    <span class="sr-only">Close sidebar</span>
+                                    <span class="sr-only">{{ __('Close sidebar') }}</span>
                                     <XIcon class="h-6 w-6 text-white" aria-hidden="true"/>
                                 </button>
                             </div>
@@ -30,33 +31,33 @@
                             <div class="flex-shrink-0 flex items-center px-4">
                                 <img class="w-auto"
                                      src="/logo.png"
-                                     alt="Madhouse Miners - Unleash your inner madness."/>
+                                     :alt="__('Madhouse Miners - Unleash your inner madness.')"/>
                             </div>
                             <nav aria-label="Mobile Navigation" class="mt-5 px-2 space-y-1">
                                 <x-link key="dash-link" :href="route('admin.index')"
                                         :class="[route().current('admin.index') ? 'active' : 'inactive', 'link']">
                                     <x-icon-chip class="w-4 h-4 mr-1"/>
-                                    <span>Dashboard</span>
+                                    <span>{{ __('Dashboard') }}</span>
                                 </x-link>
-                                <x-link key="user-link" :href="route('admin.users')"
-                                        :class="[route().current('admin.users') ? 'active' : 'inactive', 'link']">
+                                <x-link key="user-link" :href="route('admin.users.index')"
+                                        :class="[route().current('admin.users.index') ? 'active' : 'inactive', 'link']">
                                     <x-icon-users class="w-4 h-4 mr-1"/>
-                                    <span>Users</span>
+                                    <span>{{ __('Users') }}</span>
                                 </x-link>
                                 <x-link key="node-link" :href="route('admin.nodes')"
                                         :class="[route().current('admin.nodes') ? 'active' : 'inactive', 'link']">
                                     <x-icon-map class="w-4 h-4 mr-1"/>
-                                    <span>Nodes</span>
+                                    <span>{{ __('Nodes') }}</span>
                                 </x-link>
                                 <x-link key="server-link" :href="route('admin.servers')"
                                         :class="[route().current('admin.servers') ? 'active' : 'inactive', 'link']">
                                     <x-icon-server class="w-4 h-4 mr-1"/>
-                                    <span>Servers</span>
+                                    <span>{{ __('Servers') }}</span>
                                 </x-link>
                                 <x-link key="game-link" :href="route('admin.games')"
                                         :class="[route().current('admin.games') ? 'active' : 'inactive', 'link']">
                                     <x-icon-bolt class="w-4 h-4 mr-1"/>
-                                    <span>Games</span>
+                                    <span>{{ __('Games') }}</span>
                                 </x-link>
                             </nav>
                         </div>
@@ -90,33 +91,33 @@
                     <div class="flex items-center flex-shrink-0 px-4">
                         <img class="w-auto"
                              src="/logo.png"
-                             alt="Madhouse Miners - Unleash your inner madness."/>
+                             :alt="__('Madhouse Miners - Unleash your inner madness.')"/>
                     </div>
                     <nav aria-label="Desktop navigation" class="mt-5 flex-1 px-2 space-y-2">
                         <x-link key="dash-link" :href="route('admin.index')"
                                 :class="[route().current('admin.index') ? 'active' : 'inactive', 'link']">
                             <x-icon-chip class="w-4 h-4 mr-1"/>
-                            <span>Dashboard</span>
+                            <span>{{ __('Dashboard') }}</span>
                         </x-link>
-                        <x-link key="user-link" :href="route('admin.users')"
-                                :class="[route().current('admin.users') ? 'active' : 'inactive', 'link']">
+                        <x-link key="user-link" :href="route('admin.users.index')"
+                                :class="[route().current('admin.users.index') ? 'active' : 'inactive', 'link']">
                             <x-icon-users class="w-4 h-4 mr-1"/>
-                            <span>Users</span>
+                            <span>{{ __('Users') }}</span>
                         </x-link>
                         <x-link key="node-link" :href="route('admin.nodes')"
                                 :class="[route().current('admin.nodes') ? 'active' : 'inactive', 'link']">
                             <x-icon-map class="w-4 h-4 mr-1"/>
-                            <span>Nodes</span>
+                            <span>{{ __('Nodes') }}</span>
                         </x-link>
                         <x-link key="server-link" :href="route('admin.servers')"
                                 :class="[route().current('admin.servers') ? 'active' : 'inactive', 'link']">
                             <x-icon-server class="w-4 h-4 mr-1"/>
-                            <span>Servers</span>
+                            <span>{{ __('Servers') }}</span>
                         </x-link>
                         <x-link key="game-link" :href="route('admin.games')"
                                 :class="[route().current('admin.games') ? 'active' : 'inactive', 'link']">
                             <x-icon-bolt class="w-4 h-4 mr-1"/>
-                            <span>Games</span>
+                            <span>{{ __('Games') }}</span>
                         </x-link>
                     </nav>
                 </div>
@@ -133,7 +134,9 @@
                                     {{ $page.props.user.name }}
                                 </p>
                                 <p class="text-xs font-medium text-gray-200 group-hover:text-gray-200">
-                                    <x-link :href="route('profile.show')" class="hover:underline">View profile</x-link>
+                                    <x-link :href="route('profile.show')" class="hover:underline">
+                                        {{ __('View profile') }}
+                                    </x-link>
                                 </p>
                             </div>
                         </div>
@@ -147,13 +150,13 @@
                         class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-white
                             hover:text-white0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                         @click="sidebarOpen = true">
-                    <span class="sr-only">Open sidebar</span>
+                    <span class="sr-only">{{ __('Open sidebar') }}</span>
                     <MenuIcon class="h-6 w-6" aria-hidden="true"/>
                 </button>
             </div>
             <main class="flex-1">
-                <div class="py-6">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                <div class="px-4 sm:px-6 md:px-8">
+                    <div class="py-4 text-zinc-100">
                         <slot/>
                     </div>
                 </div>
@@ -171,6 +174,10 @@ import { ChipIcon, UsersIcon, ServerIcon, LocationMarkerIcon, LightningBoltIcon 
 
 export default defineComponent({
     name: "AdminLayout",
+
+    props: {
+        title: String,
+    },
 
     components: {
         XIconChip: ChipIcon,

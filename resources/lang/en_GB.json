@@ -1,0 +1,33 @@
+{
+  "Open sidebar": "Open sidebar",
+  "Close sidebar": "Close sidebar",
+  "Madhouse Miners - Unleash your inner madness.": "Madhouse Miners - Unleash your inner madness.",
+  "View profile": "View profile",
+  "Edit": "Edit",
+  "Showing": "Showing",
+  "to": "to",
+  "of": "of",
+  "results": "results",
+  "Next": "Next",
+  "Previous": "Previous",
+  "pagination.previous": "Previous",
+  "pagination.next": "Next",
+  "First page": "First page",
+  "Last page": "Last page",
+  "Filter": "Filter",
+
+  "Dashboard": "Dashboard",
+
+  "Users": "Users",
+  "User Management": "User Management",
+  "Create and manage Users": "Create and manage users",
+  "User table": "User table",
+  "Create User": "Create User",
+  "Name": "Name",
+  "Email": "Email",
+  "Role": "Role",
+
+  "Nodes": "Nodes",
+  "Servers": "Servers",
+  "Games": "Games"
+}

@@ -1,4 +1,5 @@
 <template>
+    <x-head title="Dashboard"/>
     <div class="border border-dotted border-4 border-mh-500 p-4 text-white">
         Hello!
     </div>
