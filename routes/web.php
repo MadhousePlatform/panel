@@ -20,15 +20,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', IndexController::class)->name('index');
+Route::get('/discord', DiscordController::class)->name('discord');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/servers', [ServerController::class, 'index'])->name('servers');
-
-    Route::get('/discord', [DiscordController::class, 'index'])->name('discord');
-
     Route::middleware('admin')->prefix('admin')->group(function() {
-        Route::get('/', function() {
-            return "admin!";
-        })->name('admin.index');
+        require_once __DIR__ . '/admin.php';
     });
 });
