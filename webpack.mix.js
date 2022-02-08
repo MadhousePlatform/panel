@@ -22,5 +22,15 @@ mix.js('resources/js/app.js', 'public/js').vue()
 if (mix.inProduction()) {
     mix.version();
 } else {
-    mix.sourceMaps();
+    mix.sourceMaps()
+        .browserSync({
+            https: {
+                key: "/Users/sketch/.config/valet/Certificates/madhouse.test.key",
+                cert: "/Users/sketch/.config/valet/Certificates/madhouse.test.crt"
+            },
+            proxy: "https://madhouse.test",
+            ui: {
+                port: 9070
+            }
+        });
 }

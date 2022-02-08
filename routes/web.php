@@ -23,7 +23,7 @@ Route::get('/', IndexController::class)->name('index');
 Route::get('/discord', DiscordController::class)->name('discord');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::middleware('admin')->prefix('admin')->group(function() {
+    Route::middleware('admin')->prefix('/admin')->group(function() {
         require_once __DIR__ . '/admin.php';
     });
 });
