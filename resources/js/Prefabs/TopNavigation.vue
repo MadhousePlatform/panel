@@ -3,14 +3,9 @@
             :aria-current="route().current('index')" v-if="!guest_nav">
         Home
     </x-link>
-    <x-link :href="route('servers')" :class="`${route().current('servers') ? 'active': ''} lg`"
-            :aria-current="route().current('servers')" v-if="!guest_nav">
-        Servers
-    </x-link>
-    <x-link :href="route('discord')" :class="`${route().current('discord') ? 'active': ''} lg`"
-            :aria-current="route().current('discord')" v-if="!guest_nav">
+    <a :href="route('discord')" class="lg" v-if="!guest_nav">
         Discord
-    </x-link>
+    </a>
 
     <x-link :href="route('login')" :class="`${route().current('login') ? 'active': ''} lg`"
             :aria-current="route().current('login')" v-if="guest_nav">
