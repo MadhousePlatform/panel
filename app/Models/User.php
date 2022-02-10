@@ -47,6 +47,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereTwoFactorSecret($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $uuid
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereUuid($value)
  */
 class User extends Authenticatable
 {
@@ -62,6 +64,7 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
+        'uuid',
         'name',
         'email',
         'password',
@@ -73,10 +76,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        'id',
         'password',
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
+        'created_at',
+        'profile_photo_path',
+        'email_verified_at',
     ];
 
     /**

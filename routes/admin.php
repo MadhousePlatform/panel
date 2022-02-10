@@ -5,10 +5,10 @@ use App\Http\Controllers\Admin\UserController;
 
 Route::get('/', DashboardController::class)->name('index');
 
-Route::prefix('/users')->name('users.')->group(function() {
-    Route::get('/', [UserController::class, 'index'])->name('index');
-    Route::get('/create', [UserController::class, 'create'])->name('create');
-    Route::get('/{id}', [UserController::class, 'edit'])->name('edit');
+Route::controller(UserController::class)->prefix('/users')->name('users.')->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::get('/{uuid}', 'edit')->name('edit');
 });
 
 Route::get('/nodes', DashboardController::class)->name('nodes');

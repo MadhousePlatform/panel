@@ -55,7 +55,7 @@
                     {{ roleify(user.admin?.role ?? 'User') }}
                 </td>
                 <td class="px-6 py-4 text-right">
-                    <mh-button :href="route('admin.users.edit', { id: user.id })">
+                    <mh-button :href="route('admin.users.edit', { uuid: user.uuid })">
                         <x-icon-pencil class="w-4 h-4"/>
                         <span>
                             {{ __('Edit') }}

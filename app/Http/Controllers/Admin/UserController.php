@@ -35,11 +35,11 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $uuid
      * @return Response
      */
-    public function edit(int $id): Response
+    public function edit(string $uuid): Response
     {
-        return Inertia::render('Admin/User/Edit', ['id' => $id]);
+        return Inertia::render('Admin/User/Edit', ['uuid' => $uuid]);
     }
 }
