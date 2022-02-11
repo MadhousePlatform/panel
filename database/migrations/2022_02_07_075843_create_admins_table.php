@@ -17,8 +17,8 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class);
-            $table->enum('role', [1, 10, 20]);
+            $table->foreignIdFor(User::class)->onDelete('cascade');
+            $table->integer('role');
             $table->softDeletes();
             $table->timestamps();
         });

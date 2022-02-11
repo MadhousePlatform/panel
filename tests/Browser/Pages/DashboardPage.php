@@ -3,8 +3,9 @@
 namespace Tests\Browser\Pages;
 
 use Laravel\Dusk\Browser;
+use Laravel\Dusk\Page;
 
-class IndexPage extends Page
+class DashboardPage extends Page
 {
     /**
      * Get the URL for the page.
@@ -13,7 +14,7 @@ class IndexPage extends Page
      */
     public function url(): string
     {
-        return route('index');
+        return route('admin.index');
     }
 
     /**
@@ -26,4 +27,5 @@ class IndexPage extends Page
     {
         $browser->assertUrlIs($this->url());
     }
+
 }
