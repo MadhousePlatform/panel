@@ -30,7 +30,7 @@ export default {
 <style scoped>
 a, button {
     @apply bg-gradient-to-b from-zinc-600 to-zinc-700 uppercase tracking-wide font-medium text-sm px-3 py-1.5;
-    @apply hover:from-zinc-700 hover:to-zinc-800 inline-flex items-center space-x-1 rounded;
+    @apply hover:from-zinc-700 hover:to-zinc-800 inline-flex items-center space-x-1 rounded shadow-md;
     @apply transition duration-150 ease-in;
 }
 </style>
