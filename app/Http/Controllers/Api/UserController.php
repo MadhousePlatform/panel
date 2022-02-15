@@ -70,7 +70,7 @@ class UserController extends Controller
             }
 
             activity('admin')
-                ->performedOn($user)
+                ->performedOn($user->first())
                 ->causedBy(auth()->user())
                 ->log('viewed user');
 
