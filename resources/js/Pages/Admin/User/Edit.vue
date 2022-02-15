@@ -1,8 +1,26 @@
 <template>
     <x-head :title="`${__('Editing')} ${form.name}`"/>
-    <pre>{{ JSON.stringify(user, null, 2) }}</pre>
+    <pre v-if="$page.props.env === 'localt'">{{ JSON.stringify({
+        id: form.id,
+        name: form.name,
+        email: form.email,
+        admin: form.admin,
+    }, null, 2) }}</pre>
 
-    <form @submit.prevent="updateUser">
+    <div class="flex inline-flex items-end space-x-3 mb-4">
+        <h1 class="title">{{ __('Edit User') }}</h1>
+        <h2 class="sub-title">{{ __('Update a users profile.') }}</h2>
+    </div>
+
+    <div v-if="loading">
+        <div class="bg-zinc-800 rounded py-20">
+            <div class="flex items-center justify-center space-x-4 animate-bounce">
+                <x-icon-refresh class="animate-spin h-28 w-28 text-zinc-400" />
+                <span class="text-7xl text-zinc-400 font-display">Loading</span>
+            </div>
+        </div>
+    </div>
+    <form v-else @submit.prevent="updateUser">
         <div class="max-w-5xl bg-zinc-700 p-6 rounded flex items-start space-x-4">
             <div class="w-1/3">
                 <h2>{{ __('Profile Information') }}</h2>
@@ -39,14 +57,14 @@
                 </p>
             </div>
             <div class="w-2/3">
-                <RadioGroup v-model="form.role">
+                <RadioGroup v-model="form.admin">
                     <RadioGroupLabel class="sr-only">{{ __('Roles') }}</RadioGroupLabel>
-                    <div class="rounded-md -space-y-px">
+                    <div class="rounded-md border-mh-500 border -space-y-px">
                         <RadioGroupOption as="template" v-for="(role, i) in roles" :key="role.name" :value="role" v-slot="{ checked, active }">
-                            <div :class="[i === 0 ? 'rounded-tl-md rounded-tr-md' : '', i === roles.length - 1 ? 'rounded-b-md rounded-br-md' : '', checked ? 'bg-mh-800 z-10' : '', 'border-mh-500 relative border p-4 flex cursor-pointer focus:outline-none']">
-                                <span :class="[checked ? 'bg-mh-600 border-transparent' : 'bg-zinc-700 border-mh-300', active ? 'ring-2 ring-offset-2 ring-offset-zinc-700 ring-mh-500' : '', 'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center']"
+                            <div :class="[i !== '20' ? `border-mh-500 border-b` : '', checked ? 'bg-mh-600 z-10' : '', 'relative p-4 flex cursor-pointer focus:outline-none']">
+                                <span :class="[checked ? 'bg-mh-300 border-transparent' : 'bg-zinc-700 border-mh-300', active ? 'ring-2 ring-offset-2 ring-offset-zinc-700 ring-mh-500' : '', 'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center']"
                                     aria-hidden="true">
-                                    <span class="rounded-full bg-zinc-700 w-1.5 h-1.5"/>
+                                    <span :class="[checked ? 'bg-mh-800' : '', `rounded-full w-1.5 h-1.5`]"/>
                                 </span>
                                 <div class="ml-3 flex flex-col">
                                     <RadioGroupLabel as="span" :class="[checked ? 'text-mh-100 font-bold' : 'text-zinc-100', 'block text-sm font-medium']">
@@ -60,6 +78,32 @@
                         </RadioGroupOption>
                     </div>
                 </RadioGroup>
+
+                <danger-button v-show="user.admin !== null" type="button" class="mt-4" @click="confirmingRoleDeletion = true">
+                    <x-icon-minus class="w-4 h-4" />
+                    <span>Remove Role</span>
+                </danger-button>
+
+                <jet-confirmation-modal :show="confirmingRoleDeletion" @close="confirmingRoleDeletion = false">
+                    <template #title>
+                        {{ __('Remove Role') }}
+                    </template>
+                    <template #content>
+                        <p>
+                            {{ __('Are you sure you want to remove this users role?') }}
+                        </p>
+                    </template>
+                    <template #footer>
+                        <normal-button @click.native="confirmingDeletion = false">
+                            Nevermind
+                        </normal-button>
+
+                        <danger-button class="ml-2" @click.native="removeRole" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                            <x-icon-minus class="w-4 h-4" />
+                            <span>Delete Role</span>
+                        </danger-button>
+                    </template>
+                </jet-confirmation-modal>
             </div>
         </div>
 
@@ -104,7 +148,7 @@ import XInput from "@/Components/Form/Input";
 import InputError from "@/Jetstream/InputError";
 import { useForm } from "@inertiajs/inertia-vue3";
 import MhButton from "@/Components/MadhouseButton";
-import { TrashIcon, SaveAsIcon } from '@heroicons/vue/solid';
+import { TrashIcon, SaveAsIcon, MinusCircleIcon, RefreshIcon } from '@heroicons/vue/solid';
 import { RadioGroup, RadioGroupDescription, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
 import DangerButton from "@/Jetstream/DangerButton";
 import ConfirmationModal from "@/Jetstream/ConfirmationModal";
@@ -126,6 +170,8 @@ export default defineComponent({
     RadioGroupDescription,
     XIconSave: SaveAsIcon,
     XIconTrash: TrashIcon,
+    XIconMinus: MinusCircleIcon,
+    XIconRefresh: RefreshIcon,
     JetConfirmationModal: ConfirmationModal,
   },
 
@@ -135,23 +181,28 @@ export default defineComponent({
     uuid: String,
   },
 
-  created() {
+  mounted() {
     this.getUser();
   },
 
   data() {
     return {
+      loading: true,
+      confirmingRoleDeletion: false,
       confirmingDeletion: false,
       user: {},
-      roles: [
-        { id: 1, name: "Basic", description: "Basic administrative privileges." },
-        { id: 10, name: "Admin", description: "Most administrative privileges." },
-        { id: 20, name: "Root", description: "Full administrative privileges." },
-      ],
+      roles: {
+        1: { role: 1, name: "Basic", description: "Basic administrative privileges." },
+        10: { role: 10, name: "Admin", description: "Most administrative privileges." },
+        20: { role: 20, name: "Root", description: "Full administrative privileges." },
+      },
       form: useForm({
+        id: Number,
         name: String,
         email: String,
-        role: {},
+        admin: {
+          role: 0
+        },
       })
     }
   },
@@ -163,7 +214,9 @@ export default defineComponent({
         this.form.name = res.data.user.name;
         this.form.email = res.data.user.email;
         this.user = res.data.user;
-        this.form.role = ref(this.roles[this.user.admin?.role - 1])
+        this.form.admin = window._.get(this.roles, this.user.admin?.role) ?? { role: 0 };
+        this.loading = false;
+        this.$forceUpdate();
       }).catch(e => {
         this.$toast.error(e.hasOwnProperty("response") ? e.response.data.message : e);
       })
@@ -181,8 +234,22 @@ export default defineComponent({
     updateUser() {
       window.axios.put(route('api.user.update', { uuid: this.uuid }), this.form).then(res => {
         this.$toast.success(res.data.message)
+        this.getUser();
       }).catch(e => {
           this.$toast.error(e.hasOwnProperty("response") ? e.response.data.message : e);
+      });
+    },
+
+    removeRole() {
+      window.axios.put(route('api.user.update', { uuid: this.uuid}), {
+        user: this.user,
+        action: 'removeRole'
+      }).then(res => {
+        this.getUser();
+        this.confirmingRoleDeletion = false;
+        this.$toast.success('User has been updated.')
+      }).catch(e => {
+        this.$toast.error(e.hasOwnProperty("response") ? e.response.data.message : e);
       });
     }
   }
@@ -190,11 +257,19 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h2 {
+h2:not(.sub-title) {
     @apply text-lg font-medium text-white mb-2;
 }
 
 p {
     @apply text-zinc-200;
+}
+
+h1 {
+    @apply text-4xl font-semibold;
+}
+
+h2.sub-title {
+    @apply text-2xl text-zinc-300 font-semibold;
 }
 </style>

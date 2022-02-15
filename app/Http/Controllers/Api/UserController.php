@@ -99,6 +99,12 @@ class UserController extends Controller
      */
     public function update(UpdateRequest $request, string $uuid): JsonResponse
     {
+        $this->authorize('update', User::class);
+
+        if ($request->has('action') && $request->get('action') === 'removeRole') {
+            return $this->removeRole($request);
+        }
+
         $user = User::whereUuid($uuid)->first();
         DB::transaction(function () use ($user, $request) {
             $user->setName($request->get('name'))
@@ -110,17 +116,40 @@ class UserController extends Controller
                 ->causedBy(auth()->user())
                 ->withProperties($request->all())
                 ->log('updated user');
-            if($request->get('role') !== null) {
+            if ($request->get('admin') !== null) {
                 DB::transaction(function () use ($user, $request) {
-                    $admin = Admin::firstOrCreate(['user_id' => $user->id, 'role' => $request->get('role')['id']]);
+                    $admin = Admin::firstOrCreate(['user_id' => $user->id, 'role' => $request->get('admin')['role']]);
                     $admin = Admin::find($admin->id);
                     activity('admin')
                         ->performedOn($admin)
                         ->causedBy(auth()->user())
                         ->withProperties($request->all())
-                        ->log('updated user');
+                        ->log('adding role to user');
                 });
             }
+        });
+
+        return response()->json(['message' => __('User has been updated.')]);
+    }
+
+    /**
+     * Remove admin role from user.
+     *
+     * @param  UpdateRequest  $request
+     * @return JsonResponse
+     * @throws Throwable
+     */
+    private function removeRole(UpdateRequest $request)
+    {
+        DB::transaction(function () use ($request) {
+            $user = User::find($request->get('user')['id']);
+            $user->admin->delete();
+
+            activity('admin')
+                ->performedOn($user)
+                ->causedBy(auth()->user())
+                ->withProperties($request->all())
+                ->log('removed role from user');
         });
 
         return response()->json(['message' => __('User has been updated.')]);

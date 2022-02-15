@@ -22,6 +22,22 @@ class UserPolicy
         //
     }
 
+    public function update(string $uuid): Response
+    {
+        $user = User::find(auth()->id());
+
+        if ($user->admin === null) {
+            return $this->deny(__('You must be an Administrator to edit users.'), HttpResponse::HTTP_FORBIDDEN);
+        }
+
+        if ($user->admin->role < Admin::Basic->value) {
+            return $this->deny(__('You do not have permission to delete users.'), HttpResponse::HTTP_FORBIDDEN);
+        }
+
+        return $this->allow();
+    }
+
+
     public function delete(string $uuid): Response
     {
         $user = User::find(auth()->id());
@@ -34,7 +50,7 @@ class UserPolicy
             return $this->deny(__('You must be an Administrator to delete users.'), HttpResponse::HTTP_FORBIDDEN);
         }
 
-        if($user->admin->role < Admin::Admin->value) {
+        if ($user->admin->role < Admin::Admin->value) {
             return $this->deny(__('You do not have permission to delete users.'), HttpResponse::HTTP_FORBIDDEN);
         }
 

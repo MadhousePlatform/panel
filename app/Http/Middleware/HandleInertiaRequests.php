@@ -39,6 +39,7 @@ class HandleInertiaRequests extends Middleware
     {
 
         return array_merge(parent::share($request), [
+            'env' => config('app.env'),
             'is_authenticated' => auth()->check(),
             'user' => auth()->check() ? (new User())->whereId(auth()->id())->with('admin')->first() : null,
         ]);

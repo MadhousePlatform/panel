@@ -95,6 +95,20 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get the default profile photo URL if no profile photo has been uploaded.
+     *
+     * @return string
+     */
+    protected function defaultProfilePhotoUrl(): string
+    {
+        $name = trim(collect(explode(' ', $this->name))->map(function ($segment) {
+            return mb_substr($segment, 0, 1);
+        })->join(' '));
+
+        return url('storage/no_image.png');
+    }
+
+    /**
      * The attributes that should be cast.
      *
      * @var array
