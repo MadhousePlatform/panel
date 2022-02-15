@@ -13,17 +13,6 @@
                     <span>{{ __('Create User') }}</span>
                 </normal-button>
             </div>
-            <div class="flex items-center space-x-4">
-                <normal-button>
-                    <x-icon-filter class="w-4 w-4"/>
-                    <span class="sr-only">{{ __('Filter') }}</span>
-                </normal-button>
-
-                <normal-button as="a" :href="route('admin.users.create')">
-                    <x-icon-list class="w-4 w-4"/>
-                    <span class="sr-only">{{ __('Per Page') }}</span>
-                </normal-button>
-            </div>
         </div>
 
         <table class="min-w-full divide-y divide-zinc-700" :aria-label="__('User table')">
@@ -187,12 +176,6 @@ export default defineComponent({
       }
     }
   },
-
-  data() {
-    return {
-      per_page: 25,
-    }
-  }
 })
 </script>
 

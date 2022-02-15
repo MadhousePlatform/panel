@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -12,13 +13,11 @@ class UserController extends Controller
     /**
      * Display a listing of the users.
      *
-     * @param  int  $per_page
-     * @param  int  $page
      * @return Response
      */
-    public function index(int $per_page = 25, int $page = 1): Response
+    public function index(): Response
     {
-        $users = User::paginate($per_page);
+        $users = User::paginate(25);
         return Inertia::render('Admin/User/Index', ['users' => $users]);
     }
 
