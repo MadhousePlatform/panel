@@ -21,10 +21,10 @@
                 <th scope="col" class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
                     {{ __('Name') }}
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
+                <th scope="col" class="hidden lg:table-cell px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
                     {{ __('Email') }}
                 </th>
-                <th scope="col" class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
+                <th scope="col" class="hidden lg:table-cell px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
                     {{ __('Role') }}
                 </th>
                 <th scope="col" class="relative px-6 py-3">
@@ -35,12 +35,20 @@
             <tbody>
             <tr v-for="(user, i) in users.data" :key="user.email" :class="i % 2 === 0 ? 'bg-zinc-900' : 'bg-zinc-800'">
                 <td class="px-6 py-4 whitespace-nowrap font-medium">
-                    {{ user.name }}
+                    <div class="flex lg:hidden justify-between items-center">
+                        <span>{{ user.name }}</span>
+                        <span class="text-zinc-300 text-sm lg:hidden badge badge-neutral">
+                            {{ roleify(user.admin?.role ?? 'User') }}
+                        </span>
+                    </div>
+                    <div class="hidden lg:block">
+                        {{ user.name }}
+                    </div>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                <td class="hidden lg:table-cell px-6 py-4 whitespace-nowrap">
                     {{ user.email }}
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap">
+                <td class="hidden lg:table-cell px-6 py-4 whitespace-nowrap">
                     {{ roleify(user.admin?.role ?? 'User') }}
                 </td>
                 <td class="px-6 py-4 text-right">
@@ -57,7 +65,7 @@
             <tr>
                 <td colspan="4">
                     <div class="bg-zinc-800 px-4 py-3 w-full flex items-center justify-between border-t border-zinc-900 sm:px-6">
-                        <div class="flex-1 flex justify-between sm:hidden">
+                        <div class="flex-1 flex justify-between lg:hidden">
                             <x-link :href="users.prev_page_url" class="pagination-btn rounded-md">
                                 <x-icon-chevron-left class="w-4 h-4"/>
                                 <span>{{ __('Previous') }}</span>
@@ -67,7 +75,7 @@
                                 <span>{{ __('Next') }}</span>
                             </x-link>
                         </div>
-                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                        <div class="hidden lg:flex-1 lg:flex lg:items-center lg:justify-between">
                             <div>
                                 <p class="text-sm">
                                     {{ __('Showing') }}
@@ -206,5 +214,13 @@ h2 {
 .pagination-btn.disabled {
     @apply relative inline-flex items-center px-4 py-2 border border-mh-700 text-sm font-medium;
     @apply bg-zinc-700 bg-opacity-75 cursor-not-allowed;
+}
+
+.badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-neutral {
+    @apply text-zinc-100 bg-zinc-500;
 }
 </style>

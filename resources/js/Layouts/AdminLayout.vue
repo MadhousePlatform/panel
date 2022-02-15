@@ -144,8 +144,8 @@
                 </div>
             </div>
         </div>
-        <div class="md:pl-64 flex flex-col flex-1">
-            <div class="sticky top-0 z-10 md:hidden pl-1 pt-1 sm:pl-3 sm:pt-3 bg-mh-500">
+        <div class="md:pl-64">
+            <div class="sticky top-0 z-10 md:hidden pl-1 pt-1 bg-mh-500">
                 <button type="button"
                         class="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-white
                             hover:text-white0 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -154,7 +154,7 @@
                     <MenuIcon class="h-6 w-6" aria-hidden="true"/>
                 </button>
             </div>
-            <main class="flex-1">
+            <main class="">
                 <div class="px-4 sm:px-6 md:px-8">
                     <div class="py-4 text-zinc-100">
                         <slot/>
