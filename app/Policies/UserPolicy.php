@@ -27,13 +27,17 @@ class UserPolicy
         $user = User::find(auth()->id());
 
         if ($user->getUuid() === $uuid) {
-            return $this->deny(__('You cannot delete your own account.'));
+            return $this->deny(__('You cannot delete your own account.'), HttpResponse::HTTP_FORBIDDEN);
         }
 
-        if ($user->admin !== null && $user->admin->role >= Admin::Admin->value) {
-            return $this->allow();
+        if ($user->admin === null) {
+            return $this->deny(__('You must be an Administrator to delete users.'), HttpResponse::HTTP_FORBIDDEN);
         }
 
-        return $this->deny(__('You must be an Administrator to delete users.'), HttpResponse::HTTP_FORBIDDEN);
+        if($user->admin->role < Admin::Admin->value) {
+            return $this->deny(__('You do not have permission to delete users.'), HttpResponse::HTTP_FORBIDDEN);
+        }
+
+        return $this->allow();
     }
 }

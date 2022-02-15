@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Admin;
+use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Admin\User\{
     CreateRequest,
@@ -12,8 +14,10 @@ use DB;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Log;
 use Ramsey\Uuid\Uuid;
+use Redirect;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use Throwable;
 
@@ -89,29 +93,33 @@ class UserController extends Controller
             $user->setName($request->get('name'))
                 ->setEmail($request->get('email'))
                 ->save();
+            DB::transaction(function() use ($user, $request) {
+                Admin::upsert(['user_id' => $user->id, 'role' => $request->get('role')['id']], 'user_id');
+            });
         });
 
-        return response()->json(['message' => __('User has been updated.')], HttpResponse::HTTP_OK);
+        return response()->json(['message' => __('User has been updated.')]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  string  $uuid
-     * @return JsonResponse
+     * @return Response|RedirectResponse
      * @throws AuthorizationException
      */
-    public function destroy(string $uuid): JsonResponse
+    public function destroy(string $uuid): Response|RedirectResponse
     {
         $this->authorize('delete', User::class);
 
         $user = User::whereUuid($uuid)->first();
+
         $user->deleteProfilePhoto();
         $user->tokens->each->delete();
         if ($user->admin !== null) {
             $user->admin()->delete();
         }
         $user->delete();
-        return response()->json(__('The user has been deleted.'), HttpResponse::HTTP_OK);
+        return Redirect::route('admin.users.index', [], HttpResponse::HTTP_SEE_OTHER);
     }
 }

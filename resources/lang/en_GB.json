@@ -37,6 +37,13 @@
   "An error occurred deleting the user.": "An error occurred deleting the user.",
   "You must be an Administrator to delete users.": "You must be an Administrator to delete users.",
   "You cannot delete your own account.": "You cannot delete your own account.",
+  "Change the role of this user.": "Change the role of this user.",
+  "Delete User": "Delete User",
+  "Save Changes": "Save Changes",
+  "Are you sure you want to delete your account?": "Are you sure you want to delete your account?",
+  "Once your account is deleted, all of its resources and data will be permanently deleted.": "Once your account is deleted, all of its resources and data will be permanently deleted.",
+  "Are you sure you want to delete this user account?": "Are you sure you want to delete this user account?",
+  "You do not have permission to delete users.": "You do not have permission to delete users.",
 
   "Nodes": "Nodes",
   "Servers": "Servers",

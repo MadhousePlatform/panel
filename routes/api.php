@@ -20,9 +20,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::controller(UserController::class)->prefix('/user')->group(function() {
-    Route::get('/', 'index')->name('api.user.index');           // Index
-    Route::post('/', 'store')->name('api.user.create');         // Create
-    Route::get('/{uuid}', 'show')->name('api.user.read');         // Read
-    Route::put('/{uuid}', 'update')->name('api.user.update');     // Update
-    Route::delete('/{uuid}', 'destroy')->name('api.user.delete'); // Delete
+    Route::get('/', 'index')->name('api.user.index');               // Index
+    Route::post('/', 'store')->name('api.user.create');             // Create
+    Route::get('/{uuid}', 'show')->name('api.user.read');           // Read
+    Route::put('/{uuid}', 'update')->name('api.user.update');       // Update
+    Route::delete('/{uuid}', 'destroy')->name('api.user.delete');   // Delete
 });
