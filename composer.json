@@ -9,6 +9,7 @@
   "license": "MIT",
   "require": {
     "php": "^8.0.2",
+    "ext-openssl": "*",
     "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^7.4",
     "inertiajs/inertia-laravel": "^0.5.2",
@@ -18,8 +19,8 @@
     "laravel/sanctum": "^2.14",
     "laravel/tinker": "^2.7",
     "league/flysystem-aws-s3-v3": "^3.0",
-    "tightenco/ziggy": "^1.4",
-    "ext-openssl": "*"
+    "spatie/laravel-activitylog": "^4.4",
+    "tightenco/ziggy": "^1.4"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.6",

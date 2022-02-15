@@ -18,6 +18,11 @@ class UserController extends Controller
     public function index(): Response
     {
         $users = User::paginate(25);
+
+        activity('admin')
+            ->causedBy(auth()->user())
+            ->log('viewed user index');
+
         return Inertia::render('Admin/User/Index', ['users' => $users]);
     }
 

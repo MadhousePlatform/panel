@@ -5,11 +5,9 @@ namespace App\Models;
 use Database\Factories\AdminFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
 /**
@@ -18,7 +16,6 @@ use Illuminate\Support\Carbon;
  * @property int $id
  * @property int $user_id
  * @property int $role
- * @property Carbon|null $deleted_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @property-read User|null $user
@@ -28,19 +25,20 @@ use Illuminate\Support\Carbon;
  * @method static \Illuminate\Database\Query\Builder|Admin onlyTrashed()
  * @method static Builder|Admin query()
  * @method static Builder|Admin whereCreatedAt($value)
- * @method static Builder|Admin whereDeletedAt($value)
  * @method static Builder|Admin whereId($value)
  * @method static Builder|Admin whereRole($value)
  * @method static Builder|Admin whereUpdatedAt($value)
  * @method static Builder|Admin whereUserId($value)
- * @method static \Illuminate\Database\Query\Builder|Admin withTrashed()
- * @method static \Illuminate\Database\Query\Builder|Admin withoutTrashed()
  * @mixin Eloquent
  */
 class Admin extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+
+    protected $fillable = [
+        'role',
+        'user_id'
+    ];
 
     protected $hidden = [
         'id',
