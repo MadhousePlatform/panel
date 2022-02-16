@@ -44,8 +44,8 @@
                                     <x-icon-users class="w-4 h-4 mr-1"/>
                                     <span>{{ __('Users') }}</span>
                                 </x-link>
-                                <x-link key="node-link" :href="route('admin.nodes')"
-                                        :class="[route().current('admin.nodes') ? 'active' : 'inactive', 'link']">
+                                <x-link key="node-link" :href="route('admin.nodes.index')"
+                                        :class="[route().current('admin.nodes.index') ? 'active' : 'inactive', 'link']">
                                     <x-icon-map class="w-4 h-4 mr-1"/>
                                     <span>{{ __('Nodes') }}</span>
                                 </x-link>
@@ -104,8 +104,8 @@
                             <x-icon-users class="w-4 h-4 mr-1"/>
                             <span>{{ __('Users') }}</span>
                         </x-link>
-                        <x-link key="node-link" :href="route('admin.nodes')"
-                                :class="[route().current('admin.nodes') ? 'active' : 'inactive', 'link']">
+                        <x-link key="node-link" :href="route('admin.nodes.index')"
+                                :class="[route().current('admin.nodes.index') ? 'active' : 'inactive', 'link']">
                             <x-icon-map class="w-4 h-4 mr-1"/>
                             <span>{{ __('Nodes') }}</span>
                         </x-link>
@@ -173,33 +173,33 @@ import { ChipIcon, UsersIcon, ServerIcon, LocationMarkerIcon, LightningBoltIcon 
 
 
 export default defineComponent({
-    name: "AdminLayout",
+  name: "AdminLayout",
 
-    props: {
-        title: String,
-    },
+  props: {
+    title: String,
+  },
 
-    components: {
-        XIconChip: ChipIcon,
-        XIconUsers: UsersIcon,
-        XIconServer: ServerIcon,
-        XIconMap: LocationMarkerIcon,
-        XIconBolt: LightningBoltIcon,
-        Dialog,
-        DialogOverlay,
-        TransitionChild,
-        TransitionRoot,
-        MenuIcon,
-        XIcon,
-    },
+  components: {
+    XIconChip: ChipIcon,
+    XIconUsers: UsersIcon,
+    XIconServer: ServerIcon,
+    XIconMap: LocationMarkerIcon,
+    XIconBolt: LightningBoltIcon,
+    Dialog,
+    DialogOverlay,
+    TransitionChild,
+    TransitionRoot,
+    MenuIcon,
+    XIcon,
+  },
 
-    setup() {
-        const sidebarOpen = ref(false)
+  setup() {
+    const sidebarOpen = ref(false)
 
-        return {
-            sidebarOpen,
-        }
-    },
+    return {
+      sidebarOpen,
+    }
+  },
 })
 </script>
 

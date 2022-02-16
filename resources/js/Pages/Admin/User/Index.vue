@@ -1,9 +1,14 @@
 <template>
     <x-head title="User Management"/>
     <div class="mb-8">
-        <div class="flex inline-flex items-end space-x-3 mb-4">
-            <h1 class="title">{{ __('Users') }}</h1>
-            <h2 class="sub-title">{{ __('Create and manage Users') }}</h2>
+        <div class="flex items-center justify-between mb-4">
+            <div class="flex items-end inline-flex space-x-3">
+                <h1 class="title">{{ __('Users') }}</h1>
+                <h2 class="sub-title">{{ __('Create and manage Users') }}</h2>
+            </div>
+            <div>
+                <breadcrumbs :pages="[{name: 'Users', href: route('admin.users.index'), current: true}]" />
+            </div>
         </div>
 
         <div class="toolbar">
@@ -146,6 +151,7 @@ import MadhouseButton from "@/Components/MadhouseButton";
 import { ChevronLeftIcon, ChevronRightIcon, PencilIcon, PlusIcon, FilterIcon, ViewListIcon } from "@heroicons/vue/solid";
 import XButton from "@/Jetstream/Button";
 import NormalButton from "@/Components/NormalButton";
+import Breadcrumbs from "@/Components/Breadcrumbs";
 
 export default defineComponent({
   name: "Index",
@@ -164,6 +170,7 @@ export default defineComponent({
     XIconChevronRight: ChevronRightIcon,
     MhButton: MadhouseButton,
     XIconPencil: PencilIcon,
+    Breadcrumbs,
   },
 
   layout: AdminLayout,

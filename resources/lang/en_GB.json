@@ -1,4 +1,5 @@
 {
+  "Home": "Home",
   "Open sidebar": "Open sidebar",
   "Close sidebar": "Close sidebar",
   "Madhouse Miners - Unleash your inner madness.": "Madhouse Miners - Unleash your inner madness.",
@@ -48,6 +49,11 @@
   "Update a users profile.": "Update a users profile.",
 
   "Nodes": "Nodes",
+  "Create and manage nodes": "Create and manage nodes",
+  "Create Node": "Create Node",
+  "There are no nodes to display.": "There are no nodes to display.",
+  "Create a new node": "Create a new node",
+
   "Servers": "Servers",
   "Games": "Games"
 }

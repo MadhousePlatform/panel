@@ -1,25 +1,28 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Admin;
 
-use App\Models\Admin;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Admin\User\{
     CreateRequest,
-    UpdateRequest
-};
+    UpdateRequest};
+use App\Models\Admin;
 use App\Models\User;
 use DB;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Log;
 use Ramsey\Uuid\Uuid;
 use Redirect;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use Throwable;
+use function __;
+use function activity;
+use function auth;
+use function response;
 
 class UserController extends Controller
 {
