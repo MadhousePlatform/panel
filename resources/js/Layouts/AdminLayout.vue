@@ -44,11 +44,11 @@
                                     <x-icon-users class="w-4 h-4 mr-1"/>
                                     <span>{{ __('Users') }}</span>
                                 </x-link>
-                                <x-link key="node-link" :href="route('admin.nodes.index')"
+                                <!--<x-link key="node-link" :href="route('admin.nodes.index')"
                                         :class="[route().current('admin.nodes.index') ? 'active' : 'inactive', 'link']">
                                     <x-icon-map class="w-4 h-4 mr-1"/>
                                     <span>{{ __('Nodes') }}</span>
-                                </x-link>
+                                </x-link>-->
                                 <x-link key="server-link" :href="route('admin.servers')"
                                         :class="[route().current('admin.servers') ? 'active' : 'inactive', 'link']">
                                     <x-icon-server class="w-4 h-4 mr-1"/>
@@ -104,11 +104,11 @@
                             <x-icon-users class="w-4 h-4 mr-1"/>
                             <span>{{ __('Users') }}</span>
                         </x-link>
-                        <x-link key="node-link" :href="route('admin.nodes.index')"
+                        <!-- <x-link key="node-link" :href="route('admin.nodes.index')"
                                 :class="[route().current('admin.nodes.index') ? 'active' : 'inactive', 'link']">
                             <x-icon-map class="w-4 h-4 mr-1"/>
                             <span>{{ __('Nodes') }}</span>
-                        </x-link>
+                        </x-link>-->
                         <x-link key="server-link" :href="route('admin.servers')"
                                 :class="[route().current('admin.servers') ? 'active' : 'inactive', 'link']">
                             <x-icon-server class="w-4 h-4 mr-1"/>

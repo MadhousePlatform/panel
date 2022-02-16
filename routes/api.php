@@ -31,11 +31,11 @@ Route::name('admin.')->group(function () {
         Route::delete('/{uuid}', 'destroy')->name('delete');   // Delete
     });
 
-    Route::controller(NodeController::class)->prefix('/node')->name('nodes.')->group(function () {
+    /*Route::controller(NodeController::class)->prefix('/node')->name('nodes.')->group(function () {
         Route::get('/', 'index')->name('index');               // Index
         Route::post('/', 'store')->name('create');             // Create
         Route::get('/{uuid}', 'show')->name('read');           // Read
         Route::put('/{uuid}', 'update')->name('update');       // Update
         Route::delete('/{uuid}', 'destroy')->name('delete');   // Delete
-    });
+    });*/
 });
