@@ -23,16 +23,6 @@ use Throwable;
 
 class UserController extends Controller
 {
-    public function index(Request $request): JsonResponse
-    {
-        $users = User::with(['admin'])
-            ->paginate($request->get('per_page') ?? 25, ['*'], 'page', $request->get('page') ?? 1);
-
-        return response()->json([
-            'users' => $users
-        ], HttpResponse::HTTP_OK);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
