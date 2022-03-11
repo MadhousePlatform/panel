@@ -1,8 +1,8 @@
 <template>
     <x-head :title="`${__('Editing')} ${form.name}`"/>
 
-    <div class="flex items-center justify-between mb-4">
-        <div class="flex items-end inline-flex space-x-3">
+    <div class="lg:flex lg:items-center lg:justify-betwee mb-4">
+        <div class="lg:flex lg:items-end lg:inline-flex lg:space-x-3 px-4">
             <h1 class="title">{{ __('Edit User') }}</h1>
             <h2 class="sub-title">{{ __('Update a users profile.') }}</h2>
         </div>
@@ -15,7 +15,7 @@
     </div>
 
     <div v-if="loading">
-        <div class="bg-zinc-800 rounded py-20">
+        <div class="bg-zinc-800 lg:rounded py-20">
             <div class="flex items-center justify-center space-x-4 animate-bounce">
                 <x-icon-refresh class="animate-spin h-28 w-28 text-zinc-400"/>
                 <span class="text-7xl text-zinc-400 font-display">Loading</span>
@@ -25,16 +25,16 @@
     <form v-else @submit.prevent="updateUser">
         <div class="grid grid-cols-6 gap-4">
             <div class="col-span-6 lg:col-span-4">
-                <div class="bg-zinc-700 p-6 rounded flex items-start space-x-4">
-                    <div class="w-1/3">
+                <div class="bg-zinc-700 p-6 lg:rounded lg:flex lg:items-start lg:space-x-4">
+                    <div class="block lg:w-1/3">
                         <h2>{{ __('Profile Information') }}</h2>
-                        <p>
+                        <p class="hidden lg:block">
                             {{ __('Edit basic user details.') }}
                             {{ __('You are unable to manually set a users password.') }}
                             {{ __('You must use the dedicated "Reset Password" button.') }}
                         </p>
                     </div>
-                    <div class="w-2/3">
+                    <div class="block lg:w-2/3">
                         <div class="">
                             <div class="col-span-6 sm:col-span-4">
                                 <x-input :label="__('Name')" id="name" type="text" autofocus
@@ -53,14 +53,14 @@
                     </div>
                 </div>
 
-                <div class="bg-zinc-700 p-6 rounded flex items-start mt-6 space-x-4">
-                    <div class="w-1/3">
+                <div class="bg-zinc-700 p-6 lg:rounded lg:flex lg:items-start mt-6 lg:space-x-4">
+                    <div class="block lg:w-1/3">
                         <h2>{{ __('Role') }}</h2>
-                        <p>
+                        <p class="hidden lg:block">
                             {{ __('Change the role of this user.') }}
                         </p>
                     </div>
-                    <div class="w-2/3">
+                    <div class="block lg:w-2/3">
                         <RadioGroup v-model="form.admin">
                             <RadioGroupLabel class="sr-only">{{ __('Roles') }}</RadioGroupLabel>
                             <div class="rounded-md border-mh-500 border -space-y-px">
@@ -117,7 +117,7 @@
                     </div>
                 </div>
 
-                <div class="flex justify-between items-center mt-6">
+                <div class="flex justify-between items-center mt-6 mx-4">
                     <danger-button type="button" @click="confirmingDeletion = true">
                         <x-icon-trash class="w-4 h-4"/>
                         <span>{{ __('Delete User') }}</span>

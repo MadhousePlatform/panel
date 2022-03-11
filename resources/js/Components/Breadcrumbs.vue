@@ -1,10 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-    <nav class="flex" aria-label="Breadcrumb">
+    <nav aria-label="Breadcrumb">
         <ol role="list" class="container">
             <li class="flex">
                 <div class="flex items-center">
-                    <x-link href="#" class="segment">
+                    <x-link :href="route('admin.index')" class="segment">
                         <HomeIcon class="flex-shrink-0 h-5 w-5" aria-hidden="true"/>
                         <span class="sr-only">{{ __('Home') }}</span>
                     </x-link>
@@ -37,16 +37,16 @@ export default {
 
 <style scoped>
 .container {
-    @apply bg-stone-700 rounded-md shadow px-3 py-2 flex space-x-2;
+    @apply bg-stone-700 lg:rounded-md shadow px-4 lg:px-3 py-2 mt-3 flex space-x-2;
 }
 
 .segment {
-    @apply ml-2 text-sm font-medium text-stone-100 hover:text-stone-300;
+    @apply pl-2 text-sm font-medium text-stone-100 hover:text-stone-300;
     @apply transition duration-150 ease-in;
 }
 
 .segment:last-of-type {
-    @apply mr-2;
+    @apply pr-2;
 }
 
 .active {

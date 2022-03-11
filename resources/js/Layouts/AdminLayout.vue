@@ -49,8 +49,8 @@
                                     <x-icon-map class="w-4 h-4 mr-1"/>
                                     <span>{{ __('Nodes') }}</span>
                                 </x-link>-->
-                                <x-link key="server-link" :href="route('admin.servers')"
-                                        :class="[route().current('admin.servers') ? 'active' : 'inactive', 'link']">
+                                <x-link key="server-link" :href="route('admin.servers.index')"
+                                        :class="[route().current('admin.servers.index') ? 'active' : 'inactive', 'link']">
                                     <x-icon-server class="w-4 h-4 mr-1"/>
                                     <span>{{ __('Servers') }}</span>
                                 </x-link>
@@ -109,8 +109,8 @@
                             <x-icon-map class="w-4 h-4 mr-1"/>
                             <span>{{ __('Nodes') }}</span>
                         </x-link>-->
-                        <x-link key="server-link" :href="route('admin.servers')"
-                                :class="[route().current('admin.servers') ? 'active' : 'inactive', 'link']">
+                        <x-link key="server-link" :href="route('admin.servers.index')"
+                                :class="[route().current('admin.servers.index') ? 'active' : 'inactive', 'link']">
                             <x-icon-server class="w-4 h-4 mr-1"/>
                             <span>{{ __('Servers') }}</span>
                         </x-link>
@@ -155,7 +155,7 @@
                 </button>
             </div>
             <main class="">
-                <div class="px-4 sm:px-6 md:px-8">
+                <div class="sm:px-6 md:px-8">
                     <div class="py-4 text-zinc-100">
                         <slot/>
                     </div>

@@ -127,6 +127,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
      * @param  string  $uuid
      * @return User
      */

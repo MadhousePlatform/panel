@@ -4,8 +4,6 @@ namespace Tests\Feature\Api;
 
 use App\Models\Admin;
 use App\Models\User;
-use DB;
-use Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,10 +21,10 @@ class UserTest extends TestCase
      */
     public function test_we_can_get_a_user(): void
     {
-        $user = User::factory()->create();
-        $user = User::whereUuid($user->uuid)->first();
+        $user = User::factory()->create()->first();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
-        $response = $this->actingAs($user)->get(route('api.user.read', $user->getUuid()));
+        $response = $this->actingAs($user)->get(route('api.admin.users.read', $user->getUuid()));
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertSee($user->getName(), false)
@@ -42,10 +40,10 @@ class UserTest extends TestCase
      */
     public function test_we_cannot_get_an_invalid_user(): void
     {
-        $user = User::factory()->create();
-        $user = User::whereUuid($user->uuid)->first();
+        User::factory()->create();
+        $user = User::first();
 
-        $response = $this->actingAs($user)->get(route('api.user.read', $this->faker->uuid()));
+        $response = $this->actingAs($user)->get(route('api.admin.users.read', $this->faker->uuid()));
 
         $response->assertStatus(Response::HTTP_NOT_FOUND)
             ->assertSee('This user could not be found.');
@@ -58,11 +56,11 @@ class UserTest extends TestCase
      */
     public function test_we_can_update_a_user(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->id])->create();
-        $user = User::whereUuid($user->uuid)->with('admin')->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
-        $response = $this->actingAs($user)->put(route('api.user.update', $user->uuid), [
+        $response = $this->actingAs($user)->put(route('api.admin.users.update', $user->uuid), [
             'name' => 'Gooby McGoober',
             'email' => 'gooby@example.com',
         ]);
@@ -83,11 +81,11 @@ class UserTest extends TestCase
      */
     public function test_we_cannot_update_a_user_with_invalid_details(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->id])->create();
-        $user = User::whereUuid($user->uuid)->with('admin')->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
-        $response = $this->actingAs($user)->putJson(route('api.user.update', $user->uuid), [
+        $response = $this->actingAs($user)->putJson(route('api.admin.users.update', $user->uuid), [
             'name' => 'gooby@example.com',
             'email' => 'Gooby McGoober',
         ]);
@@ -106,11 +104,11 @@ class UserTest extends TestCase
      */
     public function test_we_can_create_a_user(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->id])->create();
-        $user = User::whereUuid($user->uuid)->with('admin')->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
-        $response = $this->actingAs($user)->post(route('api.user.create'), [
+        $response = $this->actingAs($user)->post(route('api.admin.users.create'), [
             'uuid' => $this->faker->uuid,
             'name' => 'Gooby McGoober',
             'email' => 'gooby@example.com',
@@ -118,7 +116,7 @@ class UserTest extends TestCase
             'password_confirmation' => 'strong_password'
         ]);
 
-        $user = User::all()->last();
+        $user = User::orderByDesc('id')->first();
 
         $response->assertStatus(Response::HTTP_OK)
             ->assertSee(__('User has been created.'));
@@ -134,13 +132,13 @@ class UserTest extends TestCase
      */
     public function test_we_cannot_create_a_user_with_invalid_details(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->id])->create();
-        $user = User::whereUuid($user->uuid)->with('admin')->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
         $ridiculous_password = bin2hex(openssl_random_pseudo_bytes(653));
 
-        $response = $this->actingAs($user)->postJson(route('api.user.create'), [
+        $response = $this->actingAs($user)->postJson(route('api.admin.users.create'), [
             'name' => 'Gooby McGoober',
             'email' => 'gooby@example.com',
             'password' => $ridiculous_password,
@@ -162,17 +160,16 @@ class UserTest extends TestCase
      */
     public function test_we_can_delete_a_user(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->first()->id])->create();
-        $user = User::whereUuid($user->uuid)->with('admin')->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
         $delete_this_user = User::factory()->create();
+        $delete_this_user = User::whereUuid($delete_this_user->getAttribute('uuid'))->first();
 
-        $response = $this->actingAs($user)->delete(route('api.user.delete', $delete_this_user->first()->getUuid()));
+        $response = $this->actingAs($user)->delete(route('api.admin.users.delete', $delete_this_user->getUuid()));
 
-        $response->assertStatus(Response::HTTP_OK)
-            ->assertDontSee(__('An error occurred deleting the user.'))
-            ->assertSee(__('The user has been deleted.'));
+        $response->assertStatus(Response::HTTP_SEE_OTHER);
     }
 
     /**
@@ -183,19 +180,17 @@ class UserTest extends TestCase
      */
     public function test_we_can_delete_an_admin_user(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->first()->id])->create();
-        $user = User::whereUuid($user->uuid)->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
         $delete_this_user = User::factory()->create();
-        Admin::factory(['user_id' => $delete_this_user->first()->id])->create();
-        $delete_this_user = User::whereUuid($delete_this_user->first()->getUuid())->with('admin')->first();
+        Admin::factory(['user_id' => $delete_this_user->getAttribute('id')])->create();
+        $delete_this_user = User::whereUuid($delete_this_user->getAttribute('uuid'))->with('admin')->first();
 
-        $response = $this->actingAs($user)->delete(route('api.user.delete', $delete_this_user->first()->getUuid()));
+        $response = $this->actingAs($user)->delete(route('api.admin.users.delete', $delete_this_user->first()->getUuid()));
 
-        $response->assertStatus(Response::HTTP_OK)
-            ->assertDontSee(__('An error occurred deleting the user.'))
-            ->assertSee(__('The user has been deleted.'));
+        $response->assertStatus(Response::HTTP_SEE_OTHER);
     }
 
     /**
@@ -207,18 +202,18 @@ class UserTest extends TestCase
      */
     public function test_we_cant_delete_a_user_because_we_dont_have_the_permission(): void
     {
-        $user = User::factory()->create();
-        Admin::factory(['user_id' => $user->first()->id, 'role' => \App\Enums\Admin::Basic->value])->create();
-        $user = User::whereUuid($user->uuid)->first();
+        $user = User::factory()->create()->first();
+        Admin::factory(['user_id' => $user->getAttribute('id')])->create();
+        $user = User::whereUuid($user->getAttribute('uuid'))->with('admin')->first();
 
         $delete_this_user = User::factory()->create();
-        Admin::factory(['user_id' => $delete_this_user->first()->id])->create();
-        $delete_this_user = User::whereUuid($delete_this_user->first()->getUuid())->with('admin')->first();
+        Admin::factory(['user_id' => $delete_this_user->getAttribute('id')])->create();
+        $delete_this_user = User::whereUuid($delete_this_user->getAttribute('uuid'))->with('admin')->first();
 
-        $response = $this->actingAs($user)->deleteJson(route('api.user.delete', $delete_this_user->first()->getUuid()));
+        $response = $this->actingAs($user)->deleteJson(route('api.admin.users.delete', $delete_this_user->first()->getUuid()));
 
         $response->assertStatus(Response::HTTP_FORBIDDEN)
-            ->assertSee(__('You must be an Administrator to delete users.'))
-            ->assertJson(['message' => __('You must be an Administrator to delete users.')]);
+            ->assertSee(__('You do not have permission to delete users.'))
+            ->assertJson(['message' => __('You do not have permission to delete users.')]);
     }
 }

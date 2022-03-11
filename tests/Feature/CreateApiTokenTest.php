@@ -17,7 +17,7 @@ class CreateApiTokenTest extends TestCase
             return $this->markTestSkipped('API support is not enabled.');
         }
 
-        $this->actingAs($user = User::factory()->withPersonalTeam()->create());
+        $this->actingAs($user = User::factory()->create());
 
         $response = $this->post('/user/api-tokens', [
             'name' => 'Test Token',

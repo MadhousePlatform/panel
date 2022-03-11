@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\{
     DashboardController,
+    ServerController,
     UserController,
-    NodeController,
-};
+    NodeController};
 
 Route::get('/', DashboardController::class)->name('index');
 
@@ -19,5 +19,8 @@ Route::controller(UserController::class)->prefix('/users')->name('users.')->grou
     Route::get('/create', 'create')->name('create');
     Route::get('/{uuid}', 'edit')->name('edit');
 });*/
-Route::get('/servers', DashboardController::class)->name('servers');
+
+Route::controller(ServerController::class)->prefix('/servers')->name('servers.')->group(function() {
+    Route::get('/', 'index')->name('index');
+});
 Route::get('/games', DashboardController::class)->name('games');

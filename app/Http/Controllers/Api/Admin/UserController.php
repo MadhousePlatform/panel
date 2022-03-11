@@ -8,24 +8,31 @@ use App\Http\Requests\Api\Admin\User\{
     UpdateRequest};
 use App\Models\Admin;
 use App\Models\User;
-use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use Log;
+use Illuminate\Support\Facades\Log;
 use Ramsey\Uuid\Uuid;
-use Redirect;
+use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use Throwable;
-use function __;
-use function activity;
-use function auth;
-use function response;
 
 class UserController extends Controller
 {
+    public function index(Request $request): JsonResponse
+    {
+        $users = User::with(['admin'])
+            ->paginate($request->get('per_page') ?? 25, ['*'], 'page', $request->get('page') ?? 1);
+
+        return response()->json([
+            'users' => $users
+        ], HttpResponse::HTTP_OK);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -77,7 +84,6 @@ class UserController extends Controller
                 ->causedBy(auth()->user())
                 ->log('viewed user');
 
-            Log::debug(sprintf("%s called by %s", __METHOD__, auth()->user()->name));
             return response()->json(['user' => $user->first()], HttpResponse::HTTP_OK);
         } catch (ModelNotFoundException $e) {
             Log::debug(

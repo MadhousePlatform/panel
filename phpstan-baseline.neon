@@ -1,0 +1,697 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\CreateNewUser\\:\\:create\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/CreateNewUser.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\CreateNewUser\\:\\:create\\(\\) should return App\\\\Models\\\\User but returns Illuminate\\\\Database\\\\Eloquent\\\\Builder\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\.$#"
+			count: 2
+			path: app/Actions/Fortify/CreateNewUser.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\CreateNewUser\\:\\:passwordRules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/CreateNewUser.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\ResetUserPassword\\:\\:passwordRules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/ResetUserPassword.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\ResetUserPassword\\:\\:reset\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/ResetUserPassword.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Validation\\\\Validator\\:\\:validateWithBag\\(\\)\\.$#"
+			count: 2
+			path: app/Actions/Fortify/UpdateUserPassword.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\UpdateUserPassword\\:\\:passwordRules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/UpdateUserPassword.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\UpdateUserPassword\\:\\:update\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/UpdateUserPassword.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Validation\\\\Validator\\:\\:validateWithBag\\(\\)\\.$#"
+			count: 2
+			path: app/Actions/Fortify/UpdateUserProfileInformation.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\UpdateUserProfileInformation\\:\\:update\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/UpdateUserProfileInformation.php
+
+		-
+			message: "#^Method App\\\\Actions\\\\Fortify\\\\UpdateUserProfileInformation\\:\\:updateVerifiedUser\\(\\) has parameter \\$input with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Actions/Fortify/UpdateUserProfileInformation.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/Admin/NodeController.php
+
+		-
+			message: "#^Parameter \\#1 \\$modelOrId of method Spatie\\\\Activitylog\\\\ActivityLogger\\:\\:causedBy\\(\\) expects Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int\\|string\\|null, Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null given\\.$#"
+			count: 2
+			path: app/Http/Controllers/Admin/NodeController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Parameter \\#1 \\$modelOrId of method Spatie\\\\Activitylog\\\\ActivityLogger\\:\\:causedBy\\(\\) expects Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int\\|string\\|null, Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null given\\.$#"
+			count: 2
+			path: app/Http/Controllers/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Routing\\\\ResponseFactory\\|Illuminate\\\\Http\\\\Response\\:\\:json\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/NodeController.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$name\\.$#"
+			count: 4
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Builder\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$admin\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$tokens\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 16
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Routing\\\\ResponseFactory\\|Illuminate\\\\Http\\\\Response\\:\\:json\\(\\)\\.$#"
+			count: 10
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:delete\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:deleteProfilePhoto\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:setName\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to static method debug\\(\\) on an unknown class Log\\.$#"
+			count: 4
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to static method route\\(\\) on an unknown class Redirect\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to static method transaction\\(\\) on an unknown class DB\\.$#"
+			count: 8
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Cannot access property \\$admin on array\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Builder\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of class Illuminate\\\\Database\\\\Eloquent\\\\ModelNotFoundException constructor expects string, array\\|string\\|null given\\.$#"
+			count: 2
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Parameter \\#1 \\$model of method Spatie\\\\Activitylog\\\\ActivityLogger\\:\\:performedOn\\(\\) expects Illuminate\\\\Database\\\\Eloquent\\\\Model, array\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Builder\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\|null given\\.$#"
+			count: 4
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Parameter \\#1 \\$model of method Spatie\\\\Activitylog\\\\ActivityLogger\\:\\:performedOn\\(\\) expects Illuminate\\\\Database\\\\Eloquent\\\\Model, object\\|null given\\.$#"
+			count: 6
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Parameter \\#1 \\$modelOrId of method Spatie\\\\Activitylog\\\\ActivityLogger\\:\\:causedBy\\(\\) expects Illuminate\\\\Database\\\\Eloquent\\\\Model\\|int\\|string\\|null, Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\|null given\\.$#"
+			count: 12
+			path: app/Http/Controllers/Api/Admin/UserController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Routing\\\\ResponseFactory\\|Illuminate\\\\Http\\\\Response\\:\\:json\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Cannot call method all\\(\\) on array\\|Illuminate\\\\Http\\\\Request\\|string\\.$#"
+			count: 2
+			path: app/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\DashboardController\\:\\:index\\(\\) has no return type specified\\.$#"
+			count: 2
+			path: app/Http/Controllers/DashboardController.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Http\\\\RedirectResponse\\|Illuminate\\\\Routing\\\\Redirector\\:\\:to\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Controllers/DiscordController.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$admin\\.$#"
+			count: 2
+			path: app/Http/Middleware/Admin.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:id\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Middleware/Admin.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Http\\\\RedirectResponse\\|Illuminate\\\\Routing\\\\Redirector\\:\\:route\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Middleware/Admin.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\Authenticate\\:\\:redirectTo\\(\\) should return string\\|null but return statement is missing\\.$#"
+			count: 2
+			path: app/Http/Middleware/Authenticate.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:check\\(\\)\\.$#"
+			count: 4
+			path: app/Http/Middleware/HandleInertiaRequests.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:id\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Middleware/HandleInertiaRequests.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\HandleInertiaRequests\\:\\:share\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Http/Middleware/HandleInertiaRequests.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Middleware\\\\RedirectIfAuthenticated\\:\\:handle\\(\\) should return Illuminate\\\\Http\\\\RedirectResponse\\|Illuminate\\\\Http\\\\Response but returns Illuminate\\\\Http\\\\RedirectResponse\\|Illuminate\\\\Routing\\\\Redirector\\.$#"
+			count: 2
+			path: app/Http/Middleware/RedirectIfAuthenticated.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$admin\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/CreateRequest.php
+
+		-
+			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/CreateRequest.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/CreateRequest.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Api\\\\Admin\\\\User\\\\CreateRequest\\:\\:passwordRules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/CreateRequest.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Api\\\\Admin\\\\User\\\\CreateRequest\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/CreateRequest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$admin\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/DeleteRequest.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/DeleteRequest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Http\\\\Requests\\\\Api\\\\Admin\\\\User\\\\UpdateRequest\\:\\:\\$id\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/UpdateRequest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable\\:\\:\\$admin\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/UpdateRequest.php
+
+		-
+			message: "#^Attribute class JetBrains\\\\PhpStorm\\\\ArrayShape does not exist\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/UpdateRequest.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:user\\(\\)\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/UpdateRequest.php
+
+		-
+			message: "#^Method App\\\\Http\\\\Requests\\\\Api\\\\Admin\\\\User\\\\UpdateRequest\\:\\:rules\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Http/Requests/Api/Admin/User/UpdateRequest.php
+
+		-
+			message: "#^PHPDoc tag @mixin contains unknown class Eloquent\\.$#"
+			count: 2
+			path: app/Models/Admin.php
+
+		-
+			message: "#^Property App\\\\Models\\\\Admin\\:\\:\\$hidden type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/Admin.php
+
+		-
+			message: "#^PHPDoc tag @mixin contains unknown class Eloquent\\.$#"
+			count: 2
+			path: app/Models/Node.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:defaultProfilePhotoUrl\\(\\) should return string but returns Illuminate\\\\Contracts\\\\Routing\\\\UrlGenerator\\|string\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:getNotifications\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:getNotifications\\(\\) return type has no value type specified in iterable type array\\|\\(Illuminate\\\\Notifications\\\\DatabaseNotificationCollection&iterable\\<Illuminate\\\\Notifications\\\\DatabaseNotification\\>\\)\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:setNotifications\\(\\) has parameter \\$notifications with no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Method App\\\\Models\\\\User\\:\\:setNotifications\\(\\) has parameter \\$notifications with no value type specified in iterable type array\\|\\(Illuminate\\\\Notifications\\\\DatabaseNotificationCollection&iterable\\<Illuminate\\\\Notifications\\\\DatabaseNotification\\>\\)\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^PHPDoc tag @mixin contains unknown class Eloquent\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^PHPDoc type array of property App\\\\Models\\\\User\\:\\:\\$fillable is not covariant with PHPDoc type array\\<string\\> of overridden property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$fillable\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$admin is not writable\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$appends type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$casts type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$fillable type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$hidden type has no value type specified in iterable type array\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$notifications \\(Illuminate\\\\Notifications\\\\DatabaseNotificationCollection&iterable\\<Illuminate\\\\Notifications\\\\DatabaseNotification\\>\\) does not accept array\\|\\(Illuminate\\\\Notifications\\\\DatabaseNotificationCollection&iterable\\<Illuminate\\\\Notifications\\\\DatabaseNotification\\>\\)\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$notifications is not writable\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$notifications_count is not writable\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Property App\\\\Models\\\\User\\:\\:\\$profile_photo_url is not writable\\.$#"
+			count: 2
+			path: app/Models/User.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Contracts\\\\Auth\\\\Factory\\|Illuminate\\\\Contracts\\\\Auth\\\\Guard\\:\\:id\\(\\)\\.$#"
+			count: 4
+			path: app/Policies/UserPolicy.php
+
+		-
+			message: "#^Cannot access property \\$admin on array\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Builder\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\.$#"
+			count: 8
+			path: app/Policies/UserPolicy.php
+
+		-
+			message: "#^Cannot call method getUuid\\(\\) on array\\<Illuminate\\\\Database\\\\Eloquent\\\\Builder\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Builder\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\.$#"
+			count: 2
+			path: app/Policies/UserPolicy.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of method App\\\\Policies\\\\UserPolicy\\:\\:deny\\(\\) expects string\\|null, array\\|string\\|null given\\.$#"
+			count: 10
+			path: app/Policies/UserPolicy.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Http\\\\Request\\:\\:\\$email\\.$#"
+			count: 2
+			path: app/Providers/FortifyServiceProvider.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 1
+			path: tests/Browser/DashboardTest.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$name\\.$#"
+			count: 1
+			path: tests/Browser/DashboardTest.php
+
+		-
+			message: "#^Method Tests\\\\Browser\\\\Pages\\\\Page\\:\\:siteElements\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Browser/Pages/Page.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
+			count: 4
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$uuid\\.$#"
+			count: 9
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$id\\.$#"
+			count: 5
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$uuid\\.$#"
+			count: 2
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:first\\(\\)\\.$#"
+			count: 2
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:fresh\\(\\)\\.$#"
+			count: 8
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getEmail\\(\\)\\.$#"
+			count: 2
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getName\\(\\)\\.$#"
+			count: 2
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getUuid\\(\\)\\.$#"
+			count: 5
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, object\\|null given\\.$#"
+			count: 9
+			path: tests/Feature/Api/UserTest.php
+
+		-
+			message: "#^Call to an undefined method Database\\\\Factories\\\\UserFactory\\:\\:withPersonalTeam\\(\\)\\.$#"
+			count: 1
+			path: tests/Feature/ApiTokenPermissionsTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\ApiTokenPermissionsTest\\:\\:test_api_token_permissions_can_be_updated\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/ApiTokenPermissionsTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$email\\.$#"
+			count: 2
+			path: tests/Feature/AuthenticationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\AuthenticationTest\\:\\:test_login_screen_can_be_rendered\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/AuthenticationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\AuthenticationTest\\:\\:test_users_can_authenticate_using_the_login_screen\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/AuthenticationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\AuthenticationTest\\:\\:test_users_can_not_authenticate_with_invalid_password\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/AuthenticationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\BrowserSessionsTest\\:\\:test_other_browser_sessions_can_be_logged_out\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/BrowserSessionsTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 1
+			path: tests/Feature/BrowserSessionsTest.php
+
+		-
+			message: "#^Call to an undefined method Database\\\\Factories\\\\UserFactory\\:\\:withPersonalTeam\\(\\)\\.$#"
+			count: 1
+			path: tests/Feature/CreateApiTokenTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\CreateApiTokenTest\\:\\:test_api_tokens_can_be_created\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/CreateApiTokenTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\DeleteAccountTest\\:\\:test_correct_password_must_be_provided_before_account_can_be_deleted\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/DeleteAccountTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\DeleteAccountTest\\:\\:test_user_accounts_can_be_deleted\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/DeleteAccountTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 2
+			path: tests/Feature/DeleteAccountTest.php
+
+		-
+			message: "#^Call to an undefined method Database\\\\Factories\\\\UserFactory\\:\\:withPersonalTeam\\(\\)\\.$#"
+			count: 1
+			path: tests/Feature/DeleteApiTokenTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\DeleteApiTokenTest\\:\\:test_api_tokens_can_be_deleted\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/DeleteApiTokenTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 2
+			path: tests/Feature/IndexPageTest.php
+
+		-
+			message: "#^Call to an undefined method Database\\\\Factories\\\\UserFactory\\:\\:withPersonalTeam\\(\\)\\.$#"
+			count: 1
+			path: tests/Feature/PasswordConfirmationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordConfirmationTest\\:\\:test_confirm_password_screen_can_be_rendered\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordConfirmationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordConfirmationTest\\:\\:test_password_can_be_confirmed\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordConfirmationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordConfirmationTest\\:\\:test_password_is_not_confirmed_with_invalid_password\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordConfirmationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 2
+			path: tests/Feature/PasswordConfirmationTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$email\\.$#"
+			count: 4
+			path: tests/Feature/PasswordResetTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordResetTest\\:\\:test_password_can_be_reset_with_valid_token\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordResetTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordResetTest\\:\\:test_reset_password_link_can_be_requested\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordResetTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordResetTest\\:\\:test_reset_password_link_screen_can_be_rendered\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordResetTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\PasswordResetTest\\:\\:test_reset_password_screen_can_be_rendered\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/PasswordResetTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$email\\.$#"
+			count: 1
+			path: tests/Feature/ProfileInformationTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$name\\.$#"
+			count: 1
+			path: tests/Feature/ProfileInformationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\ProfileInformationTest\\:\\:test_profile_information_can_be_updated\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/ProfileInformationTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 1
+			path: tests/Feature/ProfileInformationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\RegistrationTest\\:\\:test_new_users_can_register\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/RegistrationTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\RegistrationTest\\:\\:test_registration_screen_can_be_rendered\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/RegistrationTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$two_factor_secret\\.$#"
+			count: 3
+			path: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:recoveryCodes\\(\\)\\.$#"
+			count: 4
+			path: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\TwoFactorAuthenticationSettingsTest\\:\\:test_recovery_codes_can_be_regenerated\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\TwoFactorAuthenticationSettingsTest\\:\\:test_two_factor_authentication_can_be_disabled\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\TwoFactorAuthenticationSettingsTest\\:\\:test_two_factor_authentication_can_be_enabled\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 3
+			path: tests/Feature/TwoFactorAuthenticationSettingsTest.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$password\\.$#"
+			count: 3
+			path: tests/Feature/UpdatePasswordTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\UpdatePasswordTest\\:\\:test_current_password_must_be_correct\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/UpdatePasswordTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\UpdatePasswordTest\\:\\:test_new_passwords_must_match\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/UpdatePasswordTest.php
+
+		-
+			message: "#^Method Tests\\\\Feature\\\\UpdatePasswordTest\\:\\:test_password_can_be_updated\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Feature/UpdatePasswordTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$user of method Illuminate\\\\Foundation\\\\Testing\\\\TestCase\\:\\:actingAs\\(\\) expects Illuminate\\\\Contracts\\\\Auth\\\\Authenticatable, Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<int, Illuminate\\\\Database\\\\Eloquent\\\\Model\\>\\|Illuminate\\\\Database\\\\Eloquent\\\\Model given\\.$#"
+			count: 3
+			path: tests/Feature/UpdatePasswordTest.php
+

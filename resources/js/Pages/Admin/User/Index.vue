@@ -1,8 +1,8 @@
 <template>
     <x-head title="User Management"/>
     <div class="mb-8">
-        <div class="flex items-center justify-between mb-4">
-            <div class="flex items-end inline-flex space-x-3">
+        <div class="lg:flex lg:items-center lg:justify-between mb-4">
+            <div class="lg:flex lg:items-end lg:inline-flex lg:space-x-3 px-4">
                 <h1 class="title">{{ __('Users') }}</h1>
                 <h2 class="sub-title">{{ __('Create and manage Users') }}</h2>
             </div>
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <table class="min-w-full divide-y divide-zinc-700" :aria-label="__('User table')">
+<!--        <table class="min-w-full divide-y divide-zinc-700" :aria-label="__('User table')">
             <thead class="bg-zinc-800">
             <tr>
                 <th scope="col" class="px-6 py-3 text-left text-sm font-medium uppercase tracking-wider">
@@ -140,7 +140,9 @@
                 </td>
             </tr>
             </tfoot>
-        </table>
+        </table>-->
+
+        <x-table :users="this.users.data" :paginator="this.users" />
     </div>
 </template>
 
@@ -152,15 +154,17 @@ import { ChevronLeftIcon, ChevronRightIcon, PencilIcon, PlusIcon, FilterIcon, Vi
 import XButton from "@/Jetstream/Button";
 import NormalButton from "@/Components/NormalButton";
 import Breadcrumbs from "@/Components/Breadcrumbs";
+import Table from "@/Components/Table";
 
 export default defineComponent({
   name: "Index",
 
-  props: {
+  /*props: {
     users: Object
-  },
+  },*/
 
   components: {
+    XTable: Table,
     NormalButton,
     XButton,
     XIconFilter: FilterIcon,
@@ -174,6 +178,18 @@ export default defineComponent({
   },
 
   layout: AdminLayout,
+
+  data() {
+    return {
+      users: {},
+    }
+  },
+
+  created() {
+    window.axios.get(route('api.admin.users.index')).then(res => {
+      this.users = res.data.users;
+    })
+  },
 
   methods: {
     roleify(role) {
@@ -204,7 +220,7 @@ h2 {
 }
 
 .toolbar {
-    @apply mb-4 flex items-center justify-between;
+    @apply mb-2 px-4 flex items-center justify-between;
 }
 
 .pagination-btn:not(.disabled):not(.active) {
