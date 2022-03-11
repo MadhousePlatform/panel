@@ -4,8 +4,10 @@
         <table class="min-w-full divide-y divide-zinc-600">
             <thead class="bg-zinc-700">
             <tr>
-                <th scope="col" v-for="header in headers">
-                    <span v-if="header.indexOf('#') > 0" class="sr-only">{{ __(header.split('#')[0]) }}</span>
+                <th scope="col" v-for="header in headers" :class="header.split('#')[1]">
+                    <span v-if="header.indexOf('#') > 0" :class="`${header.split('#')[1]}`">
+                        {{ __(header.split('#')[0]) }}
+                    </span>
                     <span v-else>{{ __(header) }}</span>
                 </th>
             </tr>

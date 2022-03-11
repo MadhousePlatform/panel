@@ -17,7 +17,7 @@ class UserController extends Controller
      */
     public function index(): Response
     {
-        $users = User::paginate(25);
+        $users = User::with('admin')->paginate(10);
 
         activity('admin')
             ->causedBy(auth()->user())

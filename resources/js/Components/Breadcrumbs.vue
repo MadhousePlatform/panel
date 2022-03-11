@@ -37,7 +37,7 @@ export default {
 
 <style scoped>
 .container {
-    @apply bg-stone-700 lg:rounded-md shadow px-4 lg:px-3 py-2 mt-3 flex space-x-2;
+    @apply bg-stone-700 md:rounded-md shadow px-4 lg:px-3 py-2 flex space-x-2;
 }
 
 .segment {

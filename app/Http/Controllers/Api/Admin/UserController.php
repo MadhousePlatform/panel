@@ -141,11 +141,11 @@ class UserController extends Controller
     private function removeRole(UpdateRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $user = User::find($request->get('user')['id']);
-            $user->admin->delete();
+            $admin = Admin::whereUserId($request->get('user')['id'])->first();
+            $admin->delete();
 
             activity('admin')
-                ->performedOn($user)
+                ->performedOn($admin)
                 ->causedBy(auth()->user())
                 ->withProperties($request->all())
                 ->log('removed role from user');

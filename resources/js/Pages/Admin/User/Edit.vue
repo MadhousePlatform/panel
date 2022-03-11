@@ -2,7 +2,7 @@
     <x-head :title="`${__('Editing')} ${form.name}`"/>
 
     <div class="lg:flex lg:items-center lg:justify-betwee mb-4">
-        <div class="lg:flex lg:items-end lg:inline-flex lg:space-x-3 px-4">
+        <div class="lg:flex lg:items-end lg:inline-flex lg:space-x-3 px-4 mb-4">
             <h1 class="title">{{ __('Edit User') }}</h1>
             <h2 class="sub-title">{{ __('Update a users profile.') }}</h2>
         </div>
@@ -271,7 +271,7 @@ export default defineComponent({
     },
 
     removeRole() {
-      window.axios.put(route('api.amdin.users.update', { uuid: this.uuid }), {
+      window.axios.put(route('api.admin.users.update', { uuid: this.uuid }), {
         user: this.user,
         action: 'removeRole'
       }).then(res => {
